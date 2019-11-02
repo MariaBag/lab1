@@ -14,7 +14,7 @@ Button buttonIncreaseStep(PIN_INCREASE_STEP);
 Button buttonDecreaseStep(PIN_DECREASE_STEP);
 Buzzer buzzer(PIN_BUZZER);
 
-int melodyStep = 1;
+int melodyStep = 2;
 int notes[] = {NOTE_G3, NOTE_E3, NOTE_E3, NOTE_G3, NOTE_E3, NOTE_E3, NOTE_G3, NOTE_F3, NOTE_E3, NOTE_D3, NOTE_C3, NOTE_SILENCE, 
     NOTE_A3, NOTE_C4, NOTE_A3, NOTE_G3, NOTE_E3, NOTE_E3, NOTE_G3, NOTE_F3, NOTE_E3, NOTE_D3, NOTE_C3, NOTE_SILENCE, 
     NOTE_A3, NOTE_C4, NOTE_A3, NOTE_G3, NOTE_E3, NOTE_E3, NOTE_G3, NOTE_F3, NOTE_E3, NOTE_D3, NOTE_C3, NOTE_SILENCE};
@@ -50,6 +50,8 @@ void loop() {
     }
     if (buttonDecreaseStep.wasPressed())
     {
-        melodyStep--;
+        if (melodyStep > 1) {
+          melodyStep--;
+      }
     }
 }
