@@ -17,6 +17,8 @@ public:
         notes = 0;
         durations = 0;
         melodyLength = 0;
+
+        noteDurationMs = BUZZER_NOTE_DURATION;
     }
 
     void turnSoundOn()
@@ -41,12 +43,17 @@ public:
         melodyLength = _melodyLength;
     }
 
+    void setNoteDuration(unsigned long _noteDurationMs)
+    {
+        noteDurationMs = _noteDurationMs;
+    }
+
     void playSound()
     {
         if (!isEnabled)
             return;
 
-        unsigned long duration = round(BUZZER_NOTE_DURATION*durations[currentNote]);
+        unsigned long duration = round(noteDurationMs*durations[currentNote]);
         if ((millis() - noteStartedMs) > duration)
         {
             int note = notes[currentNote];
@@ -71,4 +78,6 @@ private:
     int* notes;
     double* durations;
     int melodyLength;
+
+    unsigned long noteDurationMs;
 };

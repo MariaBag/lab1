@@ -32,17 +32,11 @@ void loop() {
     buzzer.playSound();
     if (buttonIncreaseSpeed.wasPressed())
     {
-        for (int i = 0; i < melodyLength; i++) {
-          durations[i] /= melodyStep;
-        }
-        buzzer.setMelody(notes, durations, melodyLength);
+        buzzer.setNoteDuration(BUZZER_NOTE_DURATION / melodyStep);
     }
     if (buttonDecreaseSpeed.wasPressed())
     {
-        for (int i = 0; i < melodyLength; i++) {
-          durations[i] *= melodyStep;
-        }
-        buzzer.setMelody(notes, durations, melodyLength);
+        buzzer.setNoteDuration(BUZZER_NOTE_DURATION * melodyStep);
     }
     if (buttonIncreaseStep.wasPressed())
     {
